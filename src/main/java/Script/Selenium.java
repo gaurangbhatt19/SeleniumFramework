@@ -9,8 +9,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import static Functions.driverAllocation.driverAllocate;
 
+import java.io.IOException;
+
+import static Functions.driverAllocation.driverAllocate;
+import static Functions.takeScreenShot.*;
 public class Selenium {
     static WebDriver driver;
     static WebDriverWait wait;
@@ -19,7 +22,7 @@ public class Selenium {
         driver=driverAllocate("chrome");
     }
     @Test
-    public void demo() throws InterruptedException {
+    public void demo() throws InterruptedException, IOException {
         driver.get("https://www.frugaltesting.com");
         driver.manage().window().maximize();
         wait= new WebDriverWait(driver,100);
@@ -27,6 +30,7 @@ public class Selenium {
        WebElement product= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"MyHeader\"]/li[1]")));
        Actions actions= new Actions(driver);
        actions.moveToElement(product);
+      screenShot(driver,"HomePage");
        Thread.sleep(5000);
 }
 @AfterTest

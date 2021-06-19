@@ -24,7 +24,7 @@ public static WebDriver driverAllocate(String s){
 
         // Launching browser with desired capabilities
         WebDriver driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
+      //  driver.manage().window().maximize();
         System.out.println("Executing Chrome Driver in UI mode..\n");
         return driver;
     }
