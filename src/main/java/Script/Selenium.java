@@ -1,10 +1,6 @@
 package Script;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -12,8 +8,10 @@ import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static Functions.driverAllocation.driverAllocate;
+import static Functions.DriverAllocation.driverAllocate;
 import static Functions.takeScreenShot.*;
+import static Pages.Login.*;
+
 public class Selenium {
     static WebDriver driver;
     static WebDriverWait wait;
@@ -23,15 +21,9 @@ public class Selenium {
     }
     @Test
     public void demo() throws InterruptedException, IOException {
-        driver.get("https://www.frugaltesting.com");
-        driver.manage().window().maximize();
-        wait= new WebDriverWait(driver,100);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"main-menu\"]/div/div[1]")));
-       WebElement product= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"MyHeader\"]/li[1]")));
-       Actions actions= new Actions(driver);
-       actions.moveToElement(product);
-      screenShot(driver,"HomePage");
-       Thread.sleep(5000);
+        loginPageCpanelGrab(driver,"riyafrugal","Test@1234");
+        Thread.sleep(5000);
+        screenShotFolder(driver,"CpanelLoginPage");
 }
 @AfterTest
     public void close(){

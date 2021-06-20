@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class driverAllocation {
+public class DriverAllocation {
 public static WebDriver driverAllocate(String s){
     if(s.equals("chrome")) {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/Driver/chromedriver.exe");

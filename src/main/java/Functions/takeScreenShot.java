@@ -17,11 +17,19 @@ public class takeScreenShot {
         String s=currentDateTime.toString();
         s=s.replace(":","_");
         s=s.replace(".","");
-        System.out.println(System.getProperty("user.dir")+"\\src\\main\\Screenshots\\Grab_"+message+"_"+s+".png");
         FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\src\\main\\Screenshots\\Grab_"+message+"_"+s+".png"));
 
     }
-    public void screenShotFunction(){
-
+    public static void screenShotFolder(WebDriver driver, String folderName) throws IOException {
+        File scrFile = (((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE));
+        LocalDateTime currentDateTime= LocalDateTime.now();
+        String s=currentDateTime.toString();
+        s=s.replace(":","_");
+        s=s.replace(".","");
+        File theDir = new File(System.getProperty("user.dir")+"src\\main\\Screenshots\\"+folderName);
+        if (!theDir.exists()){
+            theDir.mkdirs();
+        }
+        FileUtils.copyFile(scrFile, new File(System.getProperty("user.dir")+"\\src\\main\\Screenshots\\"+folderName+"\\Grab_"+folderName+"_"+s+".png"));
     }
 }
